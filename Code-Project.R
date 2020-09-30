@@ -36,6 +36,11 @@ applyShapiroTest <- function(residual){
   print(shapiro.test(residual))
 }
 
+# Function that finds the corelation value between 2 continuous variables.
+findCorrelation <- function(element1, element2){
+  print(cor(element1, element2))
+}
+
 # Reading the data out of the CSV files.
 cannabisData <- read.csv("DATA/potplants_MT5762.csv")
 # Selecting only the columns i am interested in.
@@ -45,7 +50,7 @@ cannabisData <- cannabisData %>%
 cannabisData <- cannabisData %>%
   mutate_if(is.character, as.factor)
 
-
+#### Commands needed to execute Question 2.
 # Calling self-declared function that creates BoxPlot for each of the elements.
 # Mg
 createBoxPlot(cannabisData, cannabisData$Mg)
@@ -95,6 +100,20 @@ applyShapiroTest(Al.residuals)
 applyShapiroTest(Sc.residuals)
 
 
+
+
+#### Commands needed to execute Question 3.
+## calling function to find correlation between 2 elements.
+# Mg with K
+findCorrelation(cannabisData$Mg, cannabisData$K)
+# Mg with Ca
+findCorrelation(cannabisData$Mg, cannabisData$Ca)
+# K with Ca
+findCorrelation(cannabisData$K, cannabisData$Ca)
+# Al with Sc
+findCorrelation(cannabisData$Al, cannabisData$Sc)
+# Mg with Al
+findCorrelation(cannabisData$Mg, cannabisData$Al)
 
 
 
